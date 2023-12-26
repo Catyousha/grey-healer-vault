@@ -1,0 +1,61 @@
+{
+  "name": "grey-healer-vault",
+  "$schema": "node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": ".",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/next:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/grey-healer-vault"
+      },
+      "configurations": {
+        "development": {
+          "outputPath": "."
+        },
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/next:server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "grey-healer-vault:build",
+        "dev": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "grey-healer-vault:build:development",
+          "dev": true
+        },
+        "production": {
+          "buildTarget": "grey-healer-vault:build:production",
+          "dev": false
+        }
+      }
+    },
+    "export": {
+      "executor": "@nx/next:export",
+      "options": {
+        "buildTarget": "grey-healer-vault:build:production"
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectName}"],
+      "options": {
+        "jestConfig": "jest.config.ts"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["./src"]
+      }
+    }
+  },
+  "tags": []
+}
