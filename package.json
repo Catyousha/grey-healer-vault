@@ -10,12 +10,12 @@
   "private": true,
   "dependencies": {
     "@nx/next": "17.2.7",
+    "axios": "^1.6.3",
     "clsx": "^2.0.0",
     "next": "13.4.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "tslib": "^2.3.0",
-    "undici": "^6.2.1",
     "zod": "^3.22.4"
   },
   "devDependencies": {

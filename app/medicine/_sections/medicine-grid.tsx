@@ -1,20 +1,22 @@
-import { MedicineResponse } from '@grey-healer-vault/schema';
-import { request } from 'undici';
+import { fetchAllMedicines } from 'data/src/lib/medicine';
+import Pagination from './pagination';
 
-export default async function MedicineGrid() {
-  const response = await request('https://api.nhs.uk/medicines', {
-    headers: {
-      'subscription-key': process.env['API_KEY'],
-    },
-  }).then(async (e) => MedicineResponse.parse(await e.body.json()));
+interface MedicineGridProps {
+  page: number;
+}
+export default async function MedicineGrid(props: MedicineGridProps) {
+  const data = await fetchAllMedicines({
+    page: props.page,
+  });
 
   return (
-    <section className="p-5 h-full">
+    <section className="flex flex-col gap-3 p-5 h-full">
+      <Pagination total={data.pagination.totalPage}/>
       <ul className="grid grid-cols-1 lg:grid-cols-4 gap-5">
-        {response.significantLink.map((e) => (
+        {data.data.map((e) => (
           <MedicineItem
-            key={e.name}
-            title={e.name}
+            key={e.id}
+            title={e.title}
             description={e.description}
           />
         ))}

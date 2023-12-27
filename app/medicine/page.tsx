@@ -7,12 +7,19 @@ export const metadata: Metadata = {
   title: 'Medicine',
 };
 
-export default async function Page() {
+export default async function Page({
+  searchParams,
+}: {
+  searchParams?: {
+    query?: string;
+    page?: string;
+  };
+}) {
   return (
     <main className="flex flex-col pb-10">
       <Header />
       <Suspense fallback={<p>Loading...</p>}>
-        <MedicineGrid/>
+        <MedicineGrid page={Number(searchParams?.page)}/>
       </Suspense>
     </main>
   );

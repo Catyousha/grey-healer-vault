@@ -30,6 +30,7 @@
     ],
     "types": ["jest", "node"],
     "paths": {
+      "@grey-healer-vault/data": ["data/src/index.ts"],
       "@grey-healer-vault/schema": ["schema/src/index.ts"]
     }
   },
