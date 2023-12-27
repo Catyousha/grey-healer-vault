@@ -3,7 +3,7 @@ import Lua from '../_resources/lua.png';
 
 export default function Header() {
   return (
-    <section className="hero bg-gradient-to-br from-slate-50 to-gray-100 pt-32">
+    <section className="hero bg-gradient-to-br from-slate-50 to-gray-100 lg:pt-32">
       <div className="flex flex-col">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <Image src={Lua} alt="" className="w-72 h-72 rounded-lg shadow-lg" />
