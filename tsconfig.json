@@ -28,7 +28,10 @@
         "name": "next"
       }
     ],
-    "types": ["jest", "node"]
+    "types": ["jest", "node"],
+    "paths": {
+      "@grey-healer-vault/schema": ["schema/src/index.ts"]
+    }
   },
   "include": [
     "**/*.ts",
