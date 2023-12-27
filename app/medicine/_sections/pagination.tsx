@@ -22,7 +22,7 @@ export default function Pagination(props: PaginationProps) {
     <div className="join">
       {Array.from(Array(props.total).keys()).map((e) => (
         <Link
-          scroll={false}
+          replace={true}
           href={createPageURL(e + 1)}
           className={clsx(
             'join-item btn',

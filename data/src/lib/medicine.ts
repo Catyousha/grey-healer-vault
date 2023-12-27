@@ -2,25 +2,22 @@ import {
   MedicinePagination,
   MedicineResponseSchema,
 } from '@grey-healer-vault/schema';
-import axios from 'axios';
+
 interface FetchAllMedicinesProps {
   page?: number;
 }
 export async function fetchAllMedicines(
   props: FetchAllMedicinesProps
 ): Promise<MedicinePagination> {
-  return await axios('https://api.nhs.uk/medicines', {
+  return await fetch(`https://api.nhs.uk/medicines?page=${props.page ?? 1}`, {
     method: 'GET',
     headers: {
-      'subscription-key': process.env['API_KEY'],
+      'subscription-key': process.env['API_KEY'] ?? '',
       'Content-Type': 'application/json',
-    },
-    params: {
-      page: props.page ?? 1,
     },
   })
     .then(async (e) => {
-      const resp = MedicineResponseSchema.parse(e.data);
+      const resp = MedicineResponseSchema.parse(await e.json());
       const parsed: MedicinePagination = {
         data: resp.significantLink.map((e) => ({
           id: getId(e.url),

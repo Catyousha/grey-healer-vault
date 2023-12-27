@@ -11,6 +11,7 @@ export default async function MedicineGrid(props: MedicineGridProps) {
 
   return (
     <section className="flex flex-col gap-3 p-5 h-full">
+      <p className='text-xs'>Note: i&apos;m broke, please reload if the result is empty / got rate limit&apos;d... ugh..</p>
       <Pagination total={data.pagination.totalPage}/>
       <ul className="grid grid-cols-1 lg:grid-cols-4 gap-5">
         {data.data.map((e) => (
