@@ -25,7 +25,7 @@ export default function Header() {
         <div className="flex flex-col items-center gap-2 py-12">
           <h1 className="font-bold">Current Affiliation</h1>
           <ul className="flex flex-wrap flex-row items-center justify-center gap-2">
-            <li>Universal Wits</li>
+            <li>Universal Nous</li>
             <li>&bull;</li>
             <li>House of Pioneer</li>
             <li>&bull;</li>
